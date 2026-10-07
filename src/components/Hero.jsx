@@ -11,6 +11,7 @@ export default function Hero() {
           {salon.heroTitle.lead}<br className="desktop-only" /> <em>{salon.heroTitle.accent}</em>
         </h1>
         <p className="hero-lede">{salon.tagline}</p>
+        {salon.heroBadge && <div className="hero-badge-mobile mobile-only">{salon.heroBadge}</div>}
         <div className="hero-ctas desktop-only">
           <a href="#book" className="btn btn-brass btn-lg">Request an appointment</a>
           <a href={`tel:${salon.phone.e164}`} className="btn btn-ghost-light btn-lg">{salon.phone.display}</a>
@@ -27,7 +28,10 @@ export default function Hero() {
       </div>
 
       <div className="hero-media desktop-only">
-        <img src={heroArch.src} alt={heroArch.alt} className="hero-arch" />
+        <div className="hero-arch-wrap">
+          <img src={heroArch.src} alt={heroArch.alt} className="hero-arch" />
+          {salon.heroBadge && <div className="hero-badge">{salon.heroBadge}</div>}
+        </div>
         <div className="hero-media-col">
           <img src={heroSide.src} alt={heroSide.alt} className="hero-side" />
           <blockquote className="hero-quote">{salon.heroQuote}</blockquote>

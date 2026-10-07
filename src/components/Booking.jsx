@@ -1,4 +1,5 @@
 import salon, { serviceOptions, timesOfDay, mapsUrl } from '../salon.config.js';
+import SocialLinks from './SocialLinks.jsx';
 
 const { phone, address, hours } = salon;
 const closedDays = hours.filter((h) => h.closed).map((h) => h.day);
@@ -92,6 +93,8 @@ export default function Booking({ form, setForm, request }) {
             <a href={request.smsHref} className="btn btn-brass btn-lg">Send request by text</a>
             <span className="fine-print">Message and data rates may apply.</span>
           </div>
+
+          {salon.booking.policy && <p className="policy">{salon.booking.policy}</p>}
         </form>
 
         <div className="booking-aside desktop-only">
@@ -102,6 +105,8 @@ export default function Booking({ form, setForm, request }) {
               <div className="label">Visit</div>
               <div className="visit-address">{address.street}<br />{address.cityLine}</div>
               <a href={mapsUrl} target="_blank" rel="noreferrer" className="text-link">Get directions →</a>
+              <a href={`tel:${phone.e164}`} className="text-link">{phone.display}</a>
+              <SocialLinks className="social-links-stacked" />
             </div>
             <div className="visit-col">
               <div className="label">Hours</div>
@@ -126,7 +131,15 @@ export default function Booking({ form, setForm, request }) {
           <a href={mapsUrl} target="_blank" rel="noreferrer" className="text-link">Directions →</a>
           <a href={`tel:${phone.e164}`} className="text-link">{phone.display}</a>
         </div>
-        <div className="muted">{salon.hoursSummary.open} · Closed {salon.hoursSummary.closed}</div>
+        <div className="hours-mobile">
+          {hours.map((h) => (
+            <div key={h.day} className={'hours-row' + (h.closed ? ' is-closed' : '')}>
+              <span>{h.day}</span>
+              <span>{h.time}</span>
+            </div>
+          ))}
+        </div>
+        <SocialLinks />
       </section>
     </>
   );

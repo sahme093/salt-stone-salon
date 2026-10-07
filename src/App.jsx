@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import About from './components/About.jsx';
 import Gallery from './components/Gallery.jsx';
 import Services from './components/Services.jsx';
+import Space from './components/Space.jsx';
 import Reviews from './components/Reviews.jsx';
 import Booking from './components/Booking.jsx';
 import Footer from './components/Footer.jsx';
@@ -24,8 +26,10 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <Gallery />
+        <About />
         <Services />
+        <Gallery />
+        <Space />
         <Reviews />
         <Booking form={form} setForm={setForm} request={request} />
       </main>

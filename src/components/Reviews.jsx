@@ -17,7 +17,7 @@ export default function Reviews() {
       <div className="section-head">
         <h2 className="section-title">Kind <em>words</em></h2>
         <div className="reviews-controls desktop-only">
-          <span className="section-note">{salon.reviews.note}</span>
+          <a href={salon.social.yelp.url} target="_blank" rel="noreferrer" className="section-note">{salon.reviews.note} →</a>
           <button type="button" className="round-btn" aria-label="Previous reviews" onClick={() => scroll(-1)}>←</button>
           <button type="button" className="round-btn" aria-label="Next reviews" onClick={() => scroll(1)}>→</button>
         </div>
@@ -34,6 +34,9 @@ export default function Reviews() {
           </article>
         ))}
       </div>
+      <a href={salon.social.yelp.url} target="_blank" rel="noreferrer" className="text-link reviews-more mobile-only">
+        Read more on Yelp →
+      </a>
     </section>
   );
 }
